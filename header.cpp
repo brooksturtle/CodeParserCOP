@@ -1,7 +1,7 @@
-#include "reader.h"
+#include "header.h"
 
 
-vector<string>Reader::getSyntax()
+vector<string>header::getSyntax()
 {
     vector<string>syntax;
     if (hasComma)
@@ -14,45 +14,45 @@ vector<string>Reader::getSyntax()
     }
     return syntax;
 }
-vector<string>Reader::getKeywords()
+vector<string>header::getKeywords()
 {
     return keywords;
 }
 
-bool Reader::getInnerError()
+bool header::getInnerError()
 {
     return innerError;
 }
-int Reader::getdepth()
+int header::getdepth()
 {
     return depth;
 }
-int Reader::getmaxDepth()
+int header::getmaxDepth()
 {
     return maxDepth;
 }
 
-vector<string>Reader::getErrors()
+vector<string>header::getErrors()
 {
     return errors;
 }
 
-vector<string>Reader::getConstants()
+vector<string>header::getConstants()
 {
     return constants;
 }
 
-vector<string>Reader::getVariables()
+vector<string>header::getVariables()
 {
     return variables;
 }
 
-vector<string>Reader::getOperands()
+vector<string>header::getOperands()
 {
     return operands;
 }
 
-void Reader::readLine(string name)
+void header::readLine(string name)
 {
     int counter = 0;
 
@@ -71,7 +71,7 @@ void Reader::readLine(string name)
 }
 
 // intakes line from file and distinguishes it into individual words
-void Reader::decipherLine(string line)
+void header::decipherLine(string line)
 {
     istringstream iss(line);
 
@@ -143,7 +143,7 @@ void Reader::decipherLine(string line)
 }
 
 // this checks for extra lines, or to see if any are missing
-void Reader::checkForMissing()
+void header::checkForMissing()
 {
     int enormity=secondStack.size();
 
@@ -198,7 +198,7 @@ void Reader::checkForMissing()
         keywords.push_back("END");
 }
 // this will count number of nested loops
-void Reader::analyzeStack()
+void header::analyzeStack()
 {
     secondStack.push_back(myStack.top());
     int stackIndex = 0;
@@ -235,7 +235,7 @@ void Reader::analyzeStack()
 
 }
 
-void Reader::endLine(vector<string>& lineWords)
+void header::endLine(vector<string>& lineWords)
 {
     bool correctEnd = true;
     int enormity = lineWords.size();
@@ -268,7 +268,7 @@ void Reader::endLine(vector<string>& lineWords)
 
     }
 }
-void Reader::functionLine(vector<string>& lineWords)
+void header::functionLine(vector<string>& lineWords)
 {
     string sub = lineWords[0];
     bool correctFunction = true;
@@ -367,7 +367,7 @@ void Reader::functionLine(vector<string>& lineWords)
 // this will be fairly simple to see if line is correct. I just need to worry about damage control,
 // also the possibility of multiple begins and other shit like an end creeping in.
 // for now I should just worry about analyzing each line seperately and work on the weird cases after.
-void Reader::beginLine(vector<string>& lineWords)
+void header::beginLine(vector<string>& lineWords)
 {
     bool correctBegin = true;
     int enormity = lineWords.size();
@@ -403,7 +403,7 @@ void Reader::beginLine(vector<string>& lineWords)
 }
 
 // analyzes correctness of for Line, correct syntax, and variables
-void Reader::forLine(vector<string>& lineWords)
+void header::forLine(vector<string>& lineWords)
 {
 
 
@@ -605,5 +605,3 @@ void Reader::forLine(vector<string>& lineWords)
 }
 // need way to throw away the whole loop if there is a syntax error
 // deciphers each string and puts for begin and end into a stack
-
-

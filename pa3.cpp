@@ -1,16 +1,13 @@
-#include "Reader.h"
+#include "header.h"
 
 using namespace std;
 
 
-int main()
+int main(int argc,  char *argv[])
 {
-    string name;
-    cout<<"INPUT> Please enter the name of the input file:"<<endl;
-    cin>>name;
-    cout<<endl;
-    Reader reader;
-    reader.readLine(name);
+
+    header reader;
+    reader.readLine(argv[1]);
     reader.checkForMissing();
 
     vector<string>errors= reader.getErrors();
@@ -94,4 +91,3 @@ int main()
     //readLine();
 
 }
-

@@ -1,5 +1,5 @@
-#ifndef READER_H
-#define READER_H
+#ifndef HEADER_H
+#define HEADER_H
 
 #include <iostream>
 #include <stack>
@@ -12,7 +12,7 @@
 
 using namespace std;
 
-class Reader
+class header
 {
     private:
         stack <string> myStack;
@@ -55,4 +55,4 @@ class Reader
 
 
 
-#endif // READER_H
+#endif // HEADER_H
